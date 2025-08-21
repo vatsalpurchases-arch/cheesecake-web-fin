@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cheesecake ✨</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <style>
+  /* Background layer that sits behind all content */
+  .bloom-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1; /* Behind everything */
+    overflow: hidden;
+  }
+
+  /* Each blossom wrapper */
+  .blossom {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    animation: bloom 3.5s ease-out forwards;
+    will-change: transform, opacity, filter;
+  }
+
+  /* Soft glow for a dreamy look */
+  .blossom svg {
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
+  }
+
+  /* Bloom animation: scale up, gently rotate, then fade */
+  @keyframes bloom {
+    0% {
+      transform: translate(-50%, -50%) scale(0) rotate(0deg);
+      opacity: 0;
+      filter: blur(2px);
+    }
+    12% {
+      opacity: 1;
+      filter: blur(0);
+    }
+    60% {
+      transform: translate(-50%, -50%) scale(1.05) rotate(8deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(0.9) rotate(12deg);
+      opacity: 0;
+      filter: blur(1px);
+    }
+  }
+
+  /* Optional: reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    .blossom { animation: none; opacity: 0; }
+  }
+</style>
+
+ <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      margin: 0;
+      background: #fff9fb;
+      color: #2d2a32;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .slide {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      max-width: 600px;
+      animation: fade 0.6s;
+    }
+    .slide.active { display: flex; }
+    @keyframes fade { from {opacity: 0;} to {opacity: 1;} }
+    input, button {
+      padding: 12px 16px;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+    }
+    button {
+      background: linear-gradient(135deg, #ff77aa, #8b5cf6);
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+    button:hover { transform: scale(1.05); }
+    a.btn, .choice-btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 18px;
+      background: linear-gradient(135deg, #10b981, #3b82f6);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #6b6873;
+    }
+    img, video {
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 15px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Formspree Form -->
+  <form id="loveForm" action="https://formspree.io/f/mrblwrwj" method="POST">
+    
+    <!-- Slide 1 -->
+    <div class="slide active" id="slide1">
+      <h1>Hey 👋</h1>
+      <p>Please enter your first name? [Not like I dont know]</p>
+      <input type="text" name="name" id="name" value="" required>
+      <p>Keep clicking on next for the next slide.:] (try opening it in a laptop if any issue)</p>
+      <button type="button" onclick="nextSlide(2)">Next →</button>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide" id="slide2">
+      <h1>Hi <span id="displayName">Diya</span> ✨</h1>
+      <p>Glad you’re here 💜</p>
+      <p>Thanks for ignoring my DM that made me write a 300 line code to design this web page.</p>
+      <button type="button" onclick="nextSlide(3)">Next →</button>
+    </div>
+
+    <!--Slide 3 -->
+    <div class="slide" id="slide3">
+        <h1>Here's something I made for you!</h1>
+        <h1>Hope you like it.</h1>
+        <h2>Please proceed further.</h2>
+        <button type="button" onclick="nextSlide(4)">Next →</button>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide" id="slide4">
+      <h1>A little confession 💌</h1>
+      <p>
+        Hey Diya! I don't know if  you still remember but I'm the same guy that ran into you for your instagram id this January. You were wearing a pink top/sweater if I'm not wrong and I came running while your were walking back to the UG girls hostel with a friend of yours. 
+      </p>
+      <p>I first saw you in the college mess with your friends and I gave it all to find your id or anything about you. Asked tens of friends and friends of friends but god it was tougher than I ever imagined, finally I had to gather my courage to run into you to ask for your id.
+    </p>
+    <p>
+      I didn't know you were in the same hostel as I'm for this year until I saw you in the mess. And I was mesmerized.
+      We have never had a chat or something before but it'd be great if we ever have one. 
+     </p>
+     <p>A couple of my friends know about this and I was strongly suggested to go and talk to you but truly you look very hard to approach also maybe because I'm a bit shy. </p>
+      <p> There's a peom for you in the next page [already posted in a uni's confession page but I strongly doubt you read it.]</p>
+       
+      <button type="button" onclick="nextSlide(5)">Next →</button>
+</div>
+
+    <!--Slide 5-->
+    <div class="slide" id="slide5">
+        <img src="poem1.jpg" width="100" height="200">
+        <img src="poem2.jpg" width="100" height="200">
+      <button type="button" onclick="nextSlide(6)">Next →</button>
+
+    </div>
+    <!--Slide 6-->
+    <div class="slide" id="slide6">
+      <h1> Almost reaching to the end 💌</h1>
+      <p>
+
+        I’ve seen you around now more than enough times and always felt you’re really pretty, sweet, and someone
+        I’d genuinely like to know better.  
+      </p>
+      <p>
+        If you ever feel like it, maybe we could grab a coffee or have a chat sometime...
+      </p>
+      <h5>I'm already in your DM requests. But not bothering your soft hands, here below is  the direct link to my IG.</h5>
+      <a href="https://www.instagram.com/vatsal_.ig/" target="_blank" class="btn" onclick="saveChoice('Visited Insta')">My Instagram</a>
+      <button type="button" onclick="nextSlide(7)">Next →</button>
+    </div>
+
+    <!-- Slide 7 -->
+      <div class="slide" id="slide7">
+      <h1>Every cell of my body if I get a positive response &#128522 </h1>
+      <img src="Happy Charlie Brown GIF by Peanuts.gif" alt="Happy Dance Gif">
+      <button type="button" onclick="nextSlide(8)">Next →</button>
+    </div>
+       <!-- Slide 8 (Respectful Ending) -->
+    <div class="slide" id="slide8">
+      <h1>No matter what 🌸</h1>
+      <p>
+        Whether you say yes, maybe, or no — I totally respect your choice.  
+        Just wanted to share my thoughts honestly.  
+      </p>
+      <button type="button" onclick="nextSlide(9)">Next →</button>
+     
+    </div>
+    <div class="slide" id="slide9">
+      <h1>💖 Thanks for reading 💖</h1>
+      <h2> Hope you liked it and I didn't creeped you out.</h2>
+      <p class="footer">Designed by Vatsal ✨</p>
+       <button type="submit">Finish & Send Response</button>
+      
+    </div>
+
+  </form>
+
+  <script>
+    let currentSlide = 1;
+
+    function nextSlide(n) {
+      document.getElementById("slide" + currentSlide).classList.remove("active");
+      currentSlide = n;
+      document.getElementById("slide" + currentSlide).classList.add("active");
+
+      if (n === 2) {
+        document.getElementById("displayName").textContent = 
+          document.getElementById("name").value;
+      }
+    }
+
+    function saveChoice(choice) {
+      let input = document.createElement("input");
+      input.type = "hidden";
+      input.name = "choice";
+      input.value = choice;
+      document.getElementById("loveForm").appendChild(input);
+    }
+  </script>
+  <!-- Background container -->
+<div class="bloom-layer" id="bloomLayer" aria-hidden="true">
+  <!-- Reusable SVG symbol definition (hidden) -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <!-- A simple 6-petal flower. Change gradient stops for different colors -->
+      <radialGradient id="petalGrad" cx="50%" cy="40%" r="60%">
+        <stop offset="0%" stop-color="#ffccdd" />
+        <stop offset="60%" stop-color="#ff99bb" />
+        <stop offset="100%" stop-color="#ff77aa" />
+      </radialGradient>
+
+      <symbol id="flower" viewBox="0 0 100 100">
+        <!-- Center -->
+        <circle cx="50" cy="50" r="7" fill="#ffd166"/>
+        <!-- 6 petals -->
+        <g fill="url(#petalGrad)">
+          <ellipse cx="50" cy="22" rx="10" ry="18"/>
+          <ellipse cx="78" cy="50" rx="18" ry="10" transform="rotate(60 78 50)"/>
+          <ellipse cx="50" cy="78" rx="10" ry="18" transform="rotate(120 50 78)"/>
+          <ellipse cx="22" cy="50" rx="18" ry="10" transform="rotate(180 22 50)"/>
+          <ellipse cx="32" cy="32" rx="10" ry="18" transform="rotate(240 32 32)"/>
+          <ellipse cx="68" cy="68" rx="10" ry="18" transform="rotate(300 68 68)"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
+</div>
+
+<script>
+  (function () {
+    const layer = document.getElementById('bloomLayer');
+
+    // Tweak these to taste
+    const BLOOM_EVERY_MS = 500;     // average interval between blooms
+    const SIZE_MIN = 40;            // min blossom size (px)
+    const SIZE_MAX = 120;           // max blossom size (px)
+    const SPREAD_PADDING = 6;       // % padding from edges to avoid clipping
+
+    function random(min, max) { return Math.random() * (max - min) + min; }
+
+    function createBlossom() {
+      const wrap = document.createElement('div');
+      wrap.className = 'blossom';
+
+      // Random position (avoid hard edges)
+      const x = random(SPREAD_PADDING, 100 - SPREAD_PADDING);
+      const y = random(SPREAD_PADDING, 100 - SPREAD_PADDING);
+      wrap.style.left = x + '%';
+      wrap.style.top = y + '%';
+
+      // Random size + subtle rotation offset
+      const size = random(SIZE_MIN, SIZE_MAX);
+      wrap.style.width = size + 'px';
+      wrap.style.height = size + 'px';
+      wrap.style.transform += ` rotate(${random(-15, 15)}deg)`;
+
+      // Random duration and small delay for variety
+      const duration = random(2.8, 4.2);
+      const delay = random(0, 0.4);
+      wrap.style.animationDuration = duration + 's';
+      wrap.style.animationDelay = delay + 's';
+
+      // Randomize hue for gentle color variety (keep in pinks by tilting hue)
+      const hue = random(325, 355); // pink-magenta range
+      wrap.style.filter += ` hue-rotate(${hue}deg)`;
+
+      // Build the SVG instance
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 100 100');
+      svg.setAttribute('width', '100%');
+      svg.setAttribute('height', '100%');
+
+      const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+      use.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#flower');
+      svg.appendChild(use);
+      wrap.appendChild(svg);
+
+      // Clean up after animation ends
+      wrap.addEventListener('animationend', () => wrap.remove(), { once: true });
+
+      layer.appendChild(wrap);
+    }
+
+    // Staggered blooming loop
+    let running = true;
+    function loop() {
+      if (!running) return;
+      createBlossom();
+      // Add some randomness to the cadence
+      setTimeout(loop, random(BLOOM_EVERY_MS * 0.6, BLOOM_EVERY_MS * 1.4));
+    }
+    loop();
+
+    // Pause when tab not visible to save CPU
+    document.addEventListener('visibilitychange', () => {
+      running = !document.hidden;
+      if (running) loop();
+    });
+  })();
+</script>
+
+</body>
+</html>
